@@ -1,0 +1,25 @@
+.header_base {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  background-color: #deeaef;
+}
+
+.text {
+  margin-left: 10px;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  background-image: url("./img/header-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  rotate: 180deg;
+  mix-blend-mode: multiply;
+  transform: scaleX(-1);
+
+}
