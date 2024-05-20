@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ICat} from "../../../model/interfaces";
 
@@ -15,10 +15,17 @@ export class CatFormComponent {
 
   @Input() buttonName!: string;
 
+  @Input() cat?: ICat;
+
+  @Output() outCat = new EventEmitter<ICat>();
+
   catForm!: FormGroup;
 
   constructor() {
+
     this.createForm();
+    console.log(this.cat)
+
   }
 
 
@@ -38,8 +45,8 @@ export class CatFormComponent {
   outputCat() {
     console.log(this.catForm)
 
-    if(this.catForm.valid) {
-      const cat: ICat = {
+    if (this.catForm.valid) {
+      this.outCat.emit({
         name: this.catForm.get('name')?.value,
         color: this.catForm.get('color')?.value,
         age: this.catForm.get('age')?.value,
@@ -47,10 +54,13 @@ export class CatFormComponent {
         isIndoor: this.catForm.get('isIndoor')?.value,
         isVaccinated: this.catForm.get('isVaccinated')?.value,
         hasMicrochip: this.catForm.get('hasMicrochip')?.value,
-      }
+      });
 
 
     } else {
       console.log('INVALID FORM')
-    }}
+    }
+  }
+
+
 }
