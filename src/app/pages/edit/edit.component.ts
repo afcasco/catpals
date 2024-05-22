@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CatsService} from "../../services/cats.service";
 import {ICat} from "../../model/interfaces";
 import {CatFormComponent} from "../../shared/components/cat-form/cat-form.component";
@@ -23,22 +23,24 @@ export class EditComponent implements OnInit{
   cat!: ICat;
   title = 'Cat Editor ';
   buttonName: string = 'Update';
+  index!: number;
 
 
-  constructor(private activatedRoute: ActivatedRoute) {
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params['id'])
-      this.cat = this.catsService.getCatById(params['id'])!;
+      this.index = params['id'];
+      this.cat = this.catsService.getCatByIndex(params['id'])!;
     })
   }
 
   editCat(cat: ICat) {
-    this.catsService.setCats(cat);
-
+    this.catsService.editCat(this.index, cat);
+    this.router.navigate(['/home']).then(r => console.log("back to home"));
   }
 
 

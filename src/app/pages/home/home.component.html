@@ -11,20 +11,8 @@
 
 
     <div class="col-sm-5 p-sm-2">
-
-
       <h3>Cat List</h3>
-      <ul class="list-group ">
-        @for (cat of cats; track cats) {
-          <li class="list-group-item list-group-item-action" (click)="goToEdit(cat)">{{ cat.name }}</li>
-        }
-      </ul>
-
+        <app-list [cats]="cats"></app-list>
     </div>
   </div>
-
-
 </div>
-
-
-

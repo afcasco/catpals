@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ICat} from "../../model/interfaces";
 import {CatsService} from "../../services/cats.service";
 import {CatFormComponent} from "../../shared/components/cat-form/cat-form.component";
+import {ListComponent} from "../list/list.component";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ import {CatFormComponent} from "../../shared/components/cat-form/cat-form.compon
     NavbarComponent,
     FormsModule,
     ReactiveFormsModule,
-    CatFormComponent
+    CatFormComponent,
+    ListComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -45,11 +47,4 @@ export class HomeComponent implements OnInit {
     this.catsService.setCats(cat);
     this.getCats();
   }
-
-  goToEdit(cat: ICat) {
-    console.log(cat)
-    this.router.navigate(['/edit', cat.id])
-      .then(r => console.log(`Editing cat with id = ${cat.id}`))
-  }
-
 }

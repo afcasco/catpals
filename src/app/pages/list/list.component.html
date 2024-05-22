@@ -1,0 +1,5 @@
+<ul class="list-group ">
+  @for (cat of cats; track cats) {
+    <li class="list-group-item list-group-item-action" (click)="goToEdit($index)">{{ cat.name }}</li>
+  }
+</ul>

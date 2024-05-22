@@ -25,28 +25,26 @@ export class CatsService {
 
   setCats(cat: ICat) {
     const cats = this.getCats();
-    this.setId(cat)
     cats.push(cat);
     window.localStorage.setItem('cats', JSON.stringify(cats));
   }
 
-  getCatById(id: number) {
-    const cats = this.getCats();
-    return cats.find(cat => cat.id === id);
+
+
+  getCatByIndex(index: number): ICat {
+    return this.getCats()[index];
   }
 
 
-  setId(cat: ICat) {
+
+
+  editCat(index: number, cat: ICat) {
     const cats = this.getCats();
+    cats[index] = cat;
+    this.saveCats(cats);
+  }
 
-    if( cats.length > 0 ) {
-      cat.id = cats.sort((a, b) => {
-        return a.id! - b.id!
-      })[cats.length - 1].id! + 1;
-    }
-    else {
-      cat.id = 0;
-    }
-
+  private saveCats(cats: ICat[]){
+    window.localStorage.setItem('cats',JSON.stringify(cats));
   }
 }
