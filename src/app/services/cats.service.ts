@@ -35,8 +35,11 @@ export class CatsService {
     return this.getCats()[index];
   }
 
-
-
+  removeCatByIndex(index: number) {
+    const cats = this.getCats();
+    cats.splice(index,1);
+    this.saveCats(cats);
+  }
 
   editCat(index: number, cat: ICat) {
     const cats = this.getCats();

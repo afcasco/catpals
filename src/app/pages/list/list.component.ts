@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {ICat} from "../../model/interfaces";
 import {Router} from "@angular/router";
+import {CatsService} from "../../services/cats.service";
 
 @Component({
   selector: 'app-list',
@@ -11,16 +12,13 @@ import {Router} from "@angular/router";
 })
 export class ListComponent {
 
+  catsService = inject(CatsService);
+
 
   constructor(private router: Router) {
-
-
   }
 
-
   private _cats: ICat[] | undefined;
-
-
 
   @Input()
   set cats(c: ICat[]) {
@@ -36,5 +34,15 @@ export class ListComponent {
   goToEdit(index: number) {
     this.router.navigate(['/edit', index])
       .then(r => console.log(`Editing cat with id = ${index}`))
+  }
+
+  removeCat(index: number) {
+    this.catsService.removeCatByIndex(index);
+    this.getCats();
+
+  }
+
+  getCats() {
+    this.cats = this.catsService.getCats();
   }
 }
