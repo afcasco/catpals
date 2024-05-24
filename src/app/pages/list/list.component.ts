@@ -33,7 +33,7 @@ export class ListComponent {
 
   goToEdit(index: number) {
     this.router.navigate(['/edit', index])
-      .then(r => console.log(`Editing cat with id = ${index}`))
+      .then(() => console.log(`Editing cat with id = ${index}`))
   }
 
   removeCat(index: number) {

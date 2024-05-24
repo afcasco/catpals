@@ -21,7 +21,7 @@ export class EditComponent implements OnInit{
 
   catsService = inject(CatsService);
   cat!: ICat;
-  title = 'Cat Editor ';
+  title = 'Cat editor';
   buttonName: string = 'Update';
   index!: number;
 
@@ -40,8 +40,7 @@ export class EditComponent implements OnInit{
 
   editCat(cat: ICat) {
     this.catsService.editCat(this.index, cat);
-    this.router.navigate(['/home']).then(r => console.log("back to home"));
+    this.router.navigate(['/home']).then(() => console.log("back to home"));
   }
-
 
 }

@@ -1,5 +1,4 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {Router, RouterLink} from "@angular/router";
 import {HeaderComponent} from "../../shared/components/header/header.component";
 import {NavbarComponent} from "../../shared/components/navbar/navbar.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -12,7 +11,6 @@ import {ListComponent} from "../list/list.component";
   selector: 'app-home',
   standalone: true,
   imports: [
-    RouterLink,
     HeaderComponent,
     NavbarComponent,
     NavbarComponent,
@@ -31,7 +29,7 @@ export class HomeComponent implements OnInit {
   title;
   buttonName = 'Save';
 
-  constructor(private router: Router) {
+  constructor() {
     this.title = "Home Title";
   }
 

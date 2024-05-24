@@ -5,10 +5,10 @@
   @for (cat of cats; track cats) {
 
     <li class="list-group-item list-group-item-action" (click)="goToEdit($index)">
-      <button class="btn btn-secondary" (click)="goToEdit($index)">
+      <button class="btn btn-secondary" (click)="goToEdit($index); $event.stopPropagation();">
         <i class="bi bi-pencil-square"></i>
       </button>
-      <button class="btn btn-danger ms-1 me-2" (click)="removeCat($index)">
+      <button class="btn btn-danger ms-1 me-2" (click)="removeCat($index); $event.stopPropagation();">
         <i class="bi bi-trash"></i>
       </button>
       {{ cat.name }}
