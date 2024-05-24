@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
   }
 
   getCats() {
-    this.cats = this.catsService.getCats();
+    this.cats = this.catsService.getCats().sort((a,b)=>a.name.localeCompare(b.name
+    ));
   }
 
   saveCat(cat: ICat) {
