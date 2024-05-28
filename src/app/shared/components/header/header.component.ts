@@ -15,7 +15,10 @@ import {NgOptimizedImage} from "@angular/common";
 
 
 export class HeaderComponent {
+
+
   @Input() title?: string;
 
-
+  constructor() {
+  }
 }

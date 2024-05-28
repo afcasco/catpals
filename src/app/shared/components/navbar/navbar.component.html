@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-
-
-  <div>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/catpals/home">Home<span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/catpals/aboutus">About Us</a>
-      </li>
-    </ul>
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/private/home">Home<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/private/aboutus">About Us</a>
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-secondary ml-auto d-flex align-items-center" (click)="logout()">
+      <span class="mr-2">Logout</span>
+    </button>
   </div>
 </nav>
-
-

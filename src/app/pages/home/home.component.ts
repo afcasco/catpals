@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from "../../shared/components/header/header.component";
 import {NavbarComponent} from "../../shared/components/navbar/navbar.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -24,12 +24,11 @@ import {ListComponent} from "../list/list.component";
 })
 export class HomeComponent implements OnInit {
 
-  catsService = inject(CatsService);
   cats: ICat[] = [];
   title;
   buttonName = 'Save';
 
-  constructor() {
+  constructor(private catsService: CatsService) {
     this.title = "Home Title";
   }
 
@@ -38,8 +37,8 @@ export class HomeComponent implements OnInit {
   }
 
   getCats() {
-    this.cats = this.catsService.getCats()
-      .sort((a,b)=>a.name.localeCompare(b.name));
+    this.cats = this.catsService.getCats().sort((a,b)=>a.name.localeCompare(b.name
+    ));
   }
 
   saveCat(cat: ICat) {

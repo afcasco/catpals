@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ICat} from "../../model/interfaces";
 import {Router} from "@angular/router";
 import {CatsService} from "../../services/cats.service";
@@ -12,10 +12,8 @@ import {CatsService} from "../../services/cats.service";
 })
 export class ListComponent {
 
-  catsService = inject(CatsService);
-
-
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private catsService: CatsService) {
   }
 
   private _cats: ICat[] | undefined;
@@ -32,7 +30,7 @@ export class ListComponent {
 
 
   goToEdit(index: number) {
-    this.router.navigate(['/edit', index])
+    this.router.navigate(['/private/edit', index])
       .then(() => console.log(`Editing cat with id = ${index}`))
   }
 

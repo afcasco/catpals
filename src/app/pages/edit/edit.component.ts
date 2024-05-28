@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CatsService} from "../../services/cats.service";
 import {ICat} from "../../model/interfaces";
@@ -17,17 +17,17 @@ import {NavbarComponent} from "../../shared/components/navbar/navbar.component";
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
 })
-export class EditComponent implements OnInit{
+export class EditComponent implements OnInit {
 
-  catsService = inject(CatsService);
   cat!: ICat;
   title = 'Cat editor';
   buttonName: string = 'Update';
   index!: number;
 
 
-
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private catsService: CatsService) {
 
   }
 
@@ -40,7 +40,7 @@ export class EditComponent implements OnInit{
 
   editCat(cat: ICat) {
     this.catsService.editCat(this.index, cat);
-    this.router.navigate(['/home']).then(() => console.log("back to home"));
+    this.router.navigate(['/private/home']).then(() => console.log("back to home"));
   }
 
 }
