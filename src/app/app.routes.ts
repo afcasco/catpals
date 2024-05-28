@@ -5,16 +5,18 @@ import {EditComponent} from "./pages/edit/edit.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
-const redirectLoggedInToHome = ()=> redirectLoggedInTo(['/private/home'])
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['/private/home'])
 
 export const routes: Routes = [
   {path: '', redirectTo: '/private/home', pathMatch: 'full'},
-  { path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToHome) },
-  { path: 'private', ...canActivate(redirectUnauthorizedToLogin), children: [
+  {path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToHome)},
+  {
+    path: 'private', ...canActivate(redirectUnauthorizedToLogin), children: [
       {path: 'home', component: HomeComponent},
       {path: 'aboutus', component: AboutusComponent},
       {path: 'edit/:id', component: EditComponent},
-    ]},
+    ]
+  },
   {path: '**', redirectTo: 'login'}
 ];
