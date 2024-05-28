@@ -32,7 +32,7 @@ export class ListComponent {
 
 
   goToEdit(index: number) {
-    this.router.navigate(['/edit', index])
+    this.router.navigate(['/private/edit', index])
       .then(() => console.log(`Editing cat with id = ${index}`))
   }
 

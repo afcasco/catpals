@@ -40,7 +40,7 @@ export class EditComponent implements OnInit{
 
   editCat(cat: ICat) {
     this.catsService.editCat(this.index, cat);
-    this.router.navigate(['/home']).then(() => console.log("back to home"));
+    this.router.navigate(['/private/home']).then(() => console.log("back to home"));
   }
 
 }
